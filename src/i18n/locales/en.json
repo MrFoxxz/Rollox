@@ -1,0 +1,59 @@
+{
+  "common": {
+    "app_name": "Rollox",
+    "player": "Player",
+    "gm": "Game Master",
+    "coming_soon": "Coming Soon",
+    "back": "Back",
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "dice": "Dice",
+    "toolkit": "Toolkit"
+  },
+  "home": {
+    "hero_title": "Your adventures, powered by fate",
+    "hero_subtitle": "The ultimate tool for your tabletop RPG sessions. Fast, intuitive, and ready for action.",
+    "cta_dice": "Open Dice Roller",
+    "player_section": {
+      "title": "For Players",
+      "desc": "Manage your dice bursts, notes, and character summaries with ease."
+    },
+    "gm_section": {
+      "title": "For Game Masters",
+      "desc": "Keep session control with tactical tools and encounter tracking."
+    },
+    "features_preview": "Upcoming Tools"
+  },
+  "dice": {
+    "title": "Dice Roller",
+    "roll": "Roll!",
+    "modifier": "Modifier",
+    "history": "Roll History",
+    "clear_history": "Clear History",
+    "no_history": "No rolls yet",
+    "total": "Total",
+    "individual": "Individual",
+    "number_of_dice": "Number of Dice",
+    "presets": {
+      "title": "Quick Presets",
+      "attack": "Attack",
+      "damage": "Damage",
+      "skill": "Skill Check",
+      "save": "Saving Throw",
+      "initiative": "Initiative"
+    }
+  },
+  "toolkit": {
+    "title": "Toolkit",
+    "player_tools": "Player Tools",
+    "gm_tools": "GM Tools",
+    "npc_manager": "NPC Manager",
+    "encounter_tracker": "Encounter Tracker",
+    "notes": "Session Notes",
+    "character_summary": "Character Summary"
+  }
+}

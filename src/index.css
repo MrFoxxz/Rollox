@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+@theme {
+  --color-primary-50: #fef8ee;
+  --color-primary-100: #fef0d6;
+  --color-primary-200: #fcdcaf;
+  --color-primary-300: #f9c17d;
+  --color-primary-400: #f59e47;
+  --color-primary-500: #f28121; /* Fox-orange */
+  --color-primary-600: #e36a18;
+  --color-primary-700: #bc5216;
+  --color-primary-800: #964219;
+  --color-primary-900: #7a3818;
+  --color-primary-950: #421a0a;
+
+  --color-bg-dark: #0f172a; /* Slate-950/900 */
+  --color-card-dark: #1e293b; /* Slate-800 */
+  --color-border-dark: #334155; /* Slate-700 */
+  
+  --color-fox: #fb923c; /* Amber-500 like */
+  --color-amber: #f59e0b;
+
+  --font-sans: "Inter", "Outfit", "Roboto", "ui-sans-serif", "system-ui", "sans-serif";
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+:root {
+  color-scheme: dark;
+}

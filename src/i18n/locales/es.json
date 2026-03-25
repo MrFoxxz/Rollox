@@ -1,0 +1,59 @@
+{
+  "common": {
+    "app_name": "Rollox",
+    "player": "Jugador",
+    "gm": "Director de Juego",
+    "coming_soon": "Próximamente",
+    "back": "Volver",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés"
+  },
+  "nav": {
+    "home": "Inicio",
+    "dice": "Dados",
+    "toolkit": "Herramientas"
+  },
+  "home": {
+    "hero_title": "Tus aventuras, impulsadas por el destino",
+    "hero_subtitle": "La herramienta definitiva para tus partidas de rol. Rápida, intuitiva y lista para la acción.",
+    "cta_dice": "Abrir Lanzador de Dados",
+    "player_section": {
+      "title": "Para Jugadores",
+      "desc": "Gestiona tus ráfagas de dados, notas y resúmenes de personaje con facilidad."
+    },
+    "gm_section": {
+      "title": "Para Directores de Juego",
+      "desc": "Mantén el control de la sesión con herramientas tácticas y seguimiento de encuentros."
+    },
+    "features_preview": "Próximas Herramientas"
+  },
+  "dice": {
+    "title": "Lanzador de Dados",
+    "roll": "¡Rodar!",
+    "modifier": "Modificador",
+    "history": "Historial de Lanzamientos",
+    "clear_history": "Limpiar Historial",
+    "no_history": "No hay lanzamientos aún",
+    "total": "Total",
+    "individual": "Individuales",
+    "number_of_dice": "Cantidad de Dados",
+    "presets": {
+      "title": "Preajustes Rápidos",
+      "attack": "Ataque",
+      "damage": "Daño",
+      "skill": "Habilidad",
+      "save": "Salvación",
+      "initiative": "Iniciativa"
+    }
+  },
+  "toolkit": {
+    "title": "Caja de Herramientas",
+    "player_tools": "Herramientas de Jugador",
+    "gm_tools": "Herramientas de GM",
+    "npc_manager": "Gestor de NPCs",
+    "encounter_tracker": "Rastreador de Encuentros",
+    "notes": "Notas de Sesión",
+    "character_summary": "Resumen de Personaje"
+  }
+}
