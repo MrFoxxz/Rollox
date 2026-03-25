@@ -55,5 +55,35 @@
     "encounter_tracker": "Encounter Tracker",
     "notes": "Session Notes",
     "character_summary": "Character Summary"
+  },
+  "settings": {
+    "title": "Settings",
+    "critical_highlight": "D20 Critical Highlight",
+    "floating_dice": "Floating Dice",
+    "hide_on_home": "Hide on Home",
+    "ui_prefs": "UI Preferences"
+  },
+  "notes": {
+    "new": "New Note",
+    "edit": "Edit Note",
+    "save": "Save Note",
+    "delete": "Delete Note",
+    "empty": "No notes yet",
+    "title_placeholder": "Title (optional)",
+    "content_placeholder": "Write something important..."
+  },
+  "presets": {
+    "new_preset": "New Preset",
+    "edit_preset": "Edit Preset",
+    "save_preset": "Save Preset",
+    "custom_presets": "Custom",
+    "system_presets": "System",
+    "fields": {
+      "name": "Name",
+      "dice": "Quantity",
+      "type": "Type",
+      "mod": "Bonus",
+      "category": "Category"
+    }
   }
 }

@@ -55,5 +55,35 @@
     "encounter_tracker": "Rastreador de Encuentros",
     "notes": "Notas de Sesión",
     "character_summary": "Resumen de Personaje"
+  },
+  "settings": {
+    "title": "Configuración",
+    "critical_highlight": "Resaltar Críticos d20",
+    "floating_dice": "Dados Flotantes",
+    "hide_on_home": "Ocultar en Inicio",
+    "ui_prefs": "Preferencias de Interfaz"
+  },
+  "notes": {
+    "new": "Nueva Nota",
+    "edit": "Editar Nota",
+    "save": "Guardar Nota",
+    "delete": "Eliminar Nota",
+    "empty": "No hay notas aún",
+    "title_placeholder": "Título (opcional)",
+    "content_placeholder": "Escribe algo importante..."
+  },
+  "presets": {
+    "new_preset": "Nuevo Preset",
+    "edit_preset": "Editar Preset",
+    "save_preset": "Guardar Preset",
+    "custom_presets": "Personalizados",
+    "system_presets": "Sistema",
+    "fields": {
+      "name": "Nombre",
+      "dice": "Cantidad",
+      "type": "Tipo",
+      "mod": "Bono",
+      "category": "Categoría"
+    }
   }
 }

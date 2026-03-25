@@ -1,27 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { DEFAULT_PRESETS } from '../../constants/presets';
 
 const initialState = {
-  presets: [
-    { id: 'attack', label: 'presets.attack', dice: 1, type: 20 },
-    { id: 'damage', label: 'presets.damage', dice: 1, type: 8 },
-    { id: 'skill', label: 'presets.skill', dice: 1, type: 20 },
-    { id: 'save', label: 'presets.save', dice: 1, type: 20 },
-    { id: 'initiative', label: 'presets.initiative', dice: 1, type: 20 }
-  ]
+  defaultPresets: DEFAULT_PRESETS,
+  customPresets: [],
 };
 
 const presetsSlice = createSlice({
   name: 'presets',
   initialState,
   reducers: {
-    addPreset: (state, action) => {
-      state.presets.push(action.payload);
+    addCustomPreset: (state, action) => {
+      const newPreset = {
+        ...action.payload,
+        id: 'custom-' + Math.random().toString(36).substr(2, 9),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+      state.customPresets.push(newPreset);
     },
-    removePreset: (state, action) => {
-      state.presets = state.presets.filter(p => p.id !== action.payload);
-    }
-  }
+    updateCustomPreset: (state, action) => {
+      const index = state.customPresets.findIndex(p => p.id === action.payload.id);
+      if (index !== -1) {
+        state.customPresets[index] = {
+          ...state.customPresets[index],
+          ...action.payload.updates,
+          updatedAt: new Date().toISOString(),
+        };
+      }
+    },
+    removeCustomPreset: (state, action) => {
+      state.customPresets = state.customPresets.filter(p => p.id !== action.payload);
+    },
+  },
 });
 
-export const { addPreset, removePreset } = presetsSlice.actions;
+export const { addCustomPreset, updateCustomPreset, removeCustomPreset } = presetsSlice.actions;
 export default presetsSlice.reducer;
