@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 const Modal = ({ isOpen, onClose, title, children, footer }) => {
+  const { t } = useTranslation()
   return (
     <AnimatePresence>
       {isOpen && (
@@ -25,7 +27,7 @@ const Modal = ({ isOpen, onClose, title, children, footer }) => {
               <button 
                 onClick={onClose}
                 className="p-2 hover:bg-slate-800 rounded-xl text-slate-500 hover:text-white transition-colors"
-                aria-label="Close modal"
+                aria-label={t('common.close')}
               >
                 <X size={20} />
               </button>

@@ -115,7 +115,7 @@ const NotesPanel = () => {
                       <Clock size={10} />
                       {new Date(note.createdAt).toLocaleDateString()}
                     </div>
-                    {note.updatedAt !== note.createdAt && <span className="text-primary-500/50">Editado</span>}
+                    {note.updatedAt !== note.createdAt && <span className="text-primary-500/50">{t('notes.edited')}</span>}
                   </div>
                 </>
               )}

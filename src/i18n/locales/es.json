@@ -5,6 +5,7 @@
     "gm": "Director de Juego",
     "coming_soon": "Próximamente",
     "back": "Volver",
+    "close": "Cerrar",
     "language": "Idioma",
     "spanish": "Español",
     "english": "Inglés"
@@ -15,6 +16,27 @@
     "toolkit": "Herramientas"
   },
   "home": {
+    "beta_badge": "Beta v1.0",
+    "player_feature_tags": [
+      "Lanzador de dados",
+      "Notas",
+      "Resumen de personaje",
+      "Vista de iniciativa"
+    ],
+    "gm_feature_tags": [
+      "Panel de GM",
+      "Encuentros",
+      "Tiradas ocultas",
+      "Gestor rápido de NPCs"
+    ],
+    "preview": {
+      "dashboard": "Panel",
+      "npcs": "PNJs",
+      "notes": "Notas",
+      "encounter": "Encuentro",
+      "maps": "Mapas",
+      "secrets": "Secretos"
+    },
     "hero_title": "Tus aventuras, impulsadas por el destino",
     "hero_subtitle": "La herramienta definitiva para tus partidas de rol. Rápida, intuitiva y lista para la acción.",
     "cta_dice": "Abrir Lanzador de Dados",
@@ -38,6 +60,13 @@
     "total": "Total",
     "individual": "Individuales",
     "number_of_dice": "Cantidad de Dados",
+    "session_badge": "Sesión: Alpha",
+    "quick_notes_title": "Notas rápidas de sesión",
+    "quick_notes_placeholder": "Escribe un recordatorio y guárdalo en tus notas…",
+    "save_to_notes": "Guardar en notas",
+    "go_to_notes": "Ir a notas completas",
+    "saved_to_notes_pill": "Guardado en notas",
+    "quick_note_title": "Nota rápida",
     "presets": {
       "title": "Preajustes Rápidos",
       "attack": "Ataque",
@@ -54,7 +83,19 @@
     "npc_manager": "Gestor de NPCs",
     "encounter_tracker": "Rastreador de Encuentros",
     "notes": "Notas de Sesión",
-    "character_summary": "Resumen de Personaje"
+    "character_summary": "Resumen de Personaje",
+    "inventory": "Inventario",
+    "gm_dashboard": "Panel de GM",
+    "hidden_rolls": "Tiradas ocultas",
+    "maps_explorer": "Explorador de mapas",
+    "bestiary": "Bestiario"
+  },
+  "floating": {
+    "panel_title": "Panel Rollox",
+    "roll_btn": "Lanzar",
+    "footer_tagline": "Listo para la aventura",
+    "minimize": "Minimizar panel",
+    "open_panel": "Abrir panel de dados"
   },
   "settings": {
     "title": "Configuración",
@@ -70,12 +111,17 @@
     "delete": "Eliminar Nota",
     "empty": "No hay notas aún",
     "title_placeholder": "Título (opcional)",
-    "content_placeholder": "Escribe algo importante..."
+    "content_placeholder": "Escribe algo importante...",
+    "edited": "Editada"
   },
   "presets": {
-    "new_preset": "Nuevo Preset",
-    "edit_preset": "Editar Preset",
-    "save_preset": "Guardar Preset",
+    "new_preset": "Nuevo preajuste",
+    "edit_preset": "Editar preajuste",
+    "save_preset": "Guardar preajuste",
+    "save_all_system": "Guardar cambios",
+    "edit_system_presets": "Modificar preajustes del sistema",
+    "edit_system_hint": "Ajusta cantidad, tipo de dado y modificador. Los nombres siguen el idioma activo.",
+    "name_placeholder": "Ej.: Ataque enfurecido",
     "custom_presets": "Personalizados",
     "system_presets": "Sistema",
     "fields": {
@@ -85,5 +131,11 @@
       "mod": "Bono",
       "category": "Categoría"
     }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "github": "GitHub",
+    "twitter": "Twitter",
+    "tagline": "Impulsado por críticos y pifias. Sin afiliación a ninguna editorial de rol."
   }
 }

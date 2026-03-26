@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { addCustomPreset, updateCustomPreset } from '../../features/presets/presetsSlice'
+import { addCustomPreset, updateCustomPreset, updateSystemPreset } from '../../features/presets/presetsSlice'
 import Modal from '../ui/Modal'
 import Button from '../ui/Button'
 import { Hash, Swords, Wand, ShieldCheck, Zap, Activity } from 'lucide-react'
@@ -27,11 +27,14 @@ const PresetModal = ({ isOpen, onClose, editingPreset = null }) => {
 
   useEffect(() => {
     if (editingPreset) {
+      const isSystem = !editingPreset.id.startsWith('custom-')
       setFormData({
-        name: editingPreset.name || (editingPreset.label ? t(editingPreset.label) : ''),
+        name: isSystem
+          ? (editingPreset.label ? t(editingPreset.label) : (editingPreset.name || ''))
+          : (editingPreset.name || (editingPreset.label ? t(editingPreset.label) : '')),
         dice: editingPreset.dice || 1,
         type: editingPreset.type || 20,
-        modifier: editingPreset.modifier || 0,
+        modifier: editingPreset.modifier ?? 0,
         category: editingPreset.category || 'Custom'
       })
     } else {
@@ -47,9 +50,18 @@ const PresetModal = ({ isOpen, onClose, editingPreset = null }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (editingPreset && editingPreset.id.startsWith('custom-')) {
-      dispatch(updateCustomPreset({ id: editingPreset.id, updates: formData }))
+    if (editingPreset) {
+      if (editingPreset.id.startsWith('custom-')) {
+        if (!formData.name?.trim()) return
+        dispatch(updateCustomPreset({ id: editingPreset.id, updates: formData }))
+      } else {
+        dispatch(updateSystemPreset({
+          id: editingPreset.id,
+          updates: { dice: formData.dice, type: formData.type, modifier: formData.modifier },
+        }))
+      }
     } else {
+      if (!formData.name?.trim()) return
       dispatch(addCustomPreset(formData))
     }
     onClose()
@@ -63,7 +75,14 @@ const PresetModal = ({ isOpen, onClose, editingPreset = null }) => {
       >
         {t('common.back')}
       </button>
-      <Button onClick={handleSubmit} disabled={!formData.name}>
+      <Button
+        onClick={handleSubmit}
+        disabled={
+          editingPreset && !editingPreset.id.startsWith('custom-')
+            ? false
+            : !formData.name?.trim()
+        }
+      >
         {t('presets.save_preset')}
       </Button>
     </>
@@ -79,8 +98,9 @@ const PresetModal = ({ isOpen, onClose, editingPreset = null }) => {
             type="text" 
             value={formData.name}
             onChange={(e) => setFormData({...formData, name: e.target.value})}
-            placeholder="e.g. Ataque Ferviente"
-            className="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-primary-500 outline-none transition-all italic font-medium"
+            placeholder={t('presets.name_placeholder')}
+            disabled={Boolean(editingPreset && !editingPreset.id.startsWith('custom-'))}
+            className="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-primary-500 outline-none transition-all italic font-medium disabled:opacity-60 disabled:cursor-not-allowed"
            />
         </div>
 

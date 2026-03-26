@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { Dice5, ChevronDown, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { getDiceImageSrc } from '../../utils/diceAssets'
+import { ChevronDown, Sparkles } from 'lucide-react'
 import { addRoll } from '../../features/dice/diceSlice'
 import { toggleFloatingDice, setFloatingDiceOpen } from '../../features/settings/settingsSlice'
 import MinimizedDiceButton from './MinimizedDiceButton'
@@ -11,6 +13,7 @@ import DiceResultDisplay from './DiceResultDisplay'
 import Button from '../ui/Button'
 
 const FloatingDicePanel = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const location = useLocation()
   const isPanelOpen = useSelector(state => state.settings.isFloatingDiceOpen)
@@ -60,15 +63,16 @@ const FloatingDicePanel = () => {
 
             <header className="flex items-center justify-between relative z-10">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-primary-500/10 rounded-lg flex items-center justify-center text-primary-500">
-                  <Dice5 size={18} />
+                <div className="w-8 h-8 bg-primary-500/10 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img src={getDiceImageSrc(20)} alt="" className="w-6 h-6 object-contain" width={24} height={24} />
                 </div>
-                <h3 className="text-sm font-black italic uppercase tracking-tighter text-white">Rollox Panel</h3>
+                <h3 className="text-sm font-black italic uppercase tracking-tighter text-white">{t('floating.panel_title')}</h3>
               </div>
               <button
+                type="button"
                 onClick={() => dispatch(setFloatingDiceOpen(false))}
                 className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-500 hover:text-white transition-colors"
-                title="Minimizar"
+                title={t('floating.minimize')}
               >
                 <ChevronDown size={20} />
               </button>
@@ -82,6 +86,7 @@ const FloatingDicePanel = () => {
               />
 
               <Button
+                type="button"
                 onClick={handleRoll}
                 disabled={isRolling}
                 className="w-full h-14 text-sm font-black uppercase italic tracking-widest relative overflow-hidden group/btn"
@@ -95,14 +100,14 @@ const FloatingDicePanel = () => {
                 ) : (
                   <span className="flex items-center gap-2">
                     <Sparkles size={16} />
-                    Lanzar
+                    {t('floating.roll_btn')}
                   </span>
                 )}
               </Button>
             </div>
 
             <footer className="text-[10px] font-black text-slate-600 uppercase tracking-widest text-center italic relative z-10 border-t border-slate-800 pt-4">
-              Ready for Adventure
+              {t('floating.footer_tagline')}
             </footer>
           </motion.div>
         )}

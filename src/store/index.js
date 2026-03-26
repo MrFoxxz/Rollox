@@ -3,16 +3,22 @@ import diceReducer from '../features/dice/diceSlice'
 import presetsReducer from '../features/presets/presetsSlice'
 import notesReducer from '../features/notes/notesSlice'
 import settingsReducer from '../features/settings/settingsSlice'
+import languageReducer from '../features/language/languageSlice'
 import { loadFromLocalStorage, saveToLocalStorage } from './localStorageMiddleware'
+import i18n from '../i18n'
 
 const preloadedState = loadFromLocalStorage()
+
+const lang = preloadedState?.language?.current ?? 'es'
+void i18n.changeLanguage(lang)
 
 export const store = configureStore({
   reducer: {
     dice: diceReducer,
     presets: presetsReducer,
     notes: notesReducer,
-    settings: settingsReducer
+    settings: settingsReducer,
+    language: languageReducer,
   },
   preloadedState
 })

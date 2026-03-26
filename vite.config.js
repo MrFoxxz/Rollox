@@ -5,9 +5,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    host: true, // 🔥 CLAVE → permite conexiones externas
-    port: 2020, // asegúrate del puerto
+    host: true,
+    port: 2020,
     strictPort: true,
-    allowedHosts: "all", // ya lo tienes bien
+    // `true` = acepta cualquier Host (túneles tunnelmole, ngrok, etc.). No uses la cadena "all", no es válida en Vite.
+    allowedHosts: true,
   },
 });

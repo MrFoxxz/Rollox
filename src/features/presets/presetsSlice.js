@@ -32,8 +32,20 @@ const presetsSlice = createSlice({
     removeCustomPreset: (state, action) => {
       state.customPresets = state.customPresets.filter(p => p.id !== action.payload);
     },
+    updateSystemPreset: (state, action) => {
+      const { id, updates } = action.payload;
+      const idx = state.defaultPresets.findIndex((p) => p.id === id);
+      if (idx === -1) return;
+      const cur = state.defaultPresets[idx];
+      state.defaultPresets[idx] = {
+        ...cur,
+        dice: updates.dice ?? cur.dice,
+        type: updates.type ?? cur.type,
+        modifier: updates.modifier ?? cur.modifier,
+      };
+    },
   },
 });
 
-export const { addCustomPreset, updateCustomPreset, removeCustomPreset } = presetsSlice.actions;
+export const { addCustomPreset, updateCustomPreset, removeCustomPreset, updateSystemPreset } = presetsSlice.actions;
 export default presetsSlice.reducer;

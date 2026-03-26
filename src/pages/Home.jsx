@@ -23,7 +23,7 @@ const Home = () => {
           className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 text-primary-400 rounded-full text-sm font-semibold mb-8 uppercase tracking-widest"
         >
           <Sparkles size={16} />
-          <span>Beta v1.0</span>
+          <span>{t('home.beta_badge')}</span>
         </motion.div>
         
         <motion.h1 
@@ -67,7 +67,10 @@ const Home = () => {
         >
           <div className="flex flex-col gap-6">
             <div className="flex flex-wrap gap-3">
-              {[ 'Dice roller', 'Notes', 'Char summary', 'Initiative view' ].map(item => (
+              {(Array.isArray(t('home.player_feature_tags', { returnObjects: true }))
+                ? t('home.player_feature_tags', { returnObjects: true })
+                : []
+              ).map((item) => (
                 <span key={item} className="px-3 py-1 bg-slate-800 text-slate-400 rounded-lg text-xs font-semibold group-hover:text-primary-400 group-hover:bg-primary-500/5 transition-colors border border-transparent group-hover:border-primary-500/20 capitalize lowercase tracking-tight italic">{item}</span>
               ))}
             </div>
@@ -84,7 +87,10 @@ const Home = () => {
         >
           <div className="flex flex-col gap-6">
              <div className="flex flex-wrap gap-3">
-              {[ 'GM Dashboard', 'Encounters', 'Hidden Rolls', 'NPC quick manager' ].map(item => (
+              {(Array.isArray(t('home.gm_feature_tags', { returnObjects: true }))
+                ? t('home.gm_feature_tags', { returnObjects: true })
+                : []
+              ).map((item) => (
                 <span key={item} className="px-3 py-1 bg-slate-800 text-slate-400 rounded-lg text-xs font-semibold group-hover:text-amber-400 group-hover:bg-amber-500/5 transition-colors border border-transparent group-hover:border-amber-500/20 capitalize lowercase tracking-tight italic">{item}</span>
               ))}
             </div>
@@ -105,15 +111,15 @@ const Home = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full">
           {[
-            { icon: LayoutDashboard, label: 'Dashboard' },
-            { icon: Users, label: 'NPCs' },
-            { icon: ScrollText, label: 'Notes' },
-            { icon: ShieldAlert, label: 'Encounter' },
-            { icon: MapPin, label: 'Maps' },
-            { icon: EyeOff, label: 'Secrets' }
-          ].map(({ icon: Icon, label }, idx) => (
+            { icon: LayoutDashboard, labelKey: 'home.preview.dashboard' },
+            { icon: Users, labelKey: 'home.preview.npcs' },
+            { icon: ScrollText, labelKey: 'home.preview.notes' },
+            { icon: ShieldAlert, labelKey: 'home.preview.encounter' },
+            { icon: MapPin, labelKey: 'home.preview.maps' },
+            { icon: EyeOff, labelKey: 'home.preview.secrets' }
+          ].map(({ icon: Icon, labelKey }, idx) => (
             <motion.div
-              key={label}
+              key={labelKey}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -123,7 +129,7 @@ const Home = () => {
                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-primary-500 group-hover:bg-primary-500/10 transition-all">
                 <Icon size={24} />
               </div>
-              <span className="text-xs font-bold text-slate-600 group-hover:text-slate-400 uppercase tracking-widest">{label}</span>
+              <span className="text-xs font-bold text-slate-600 group-hover:text-slate-400 uppercase tracking-widest">{t(labelKey)}</span>
               <div className="absolute top-2 right-2 text-[10px] font-black text-slate-700 uppercase tracking-[0.2em]">{t('common.coming_soon')}</div>
             </motion.div>
           ))}

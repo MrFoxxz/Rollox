@@ -7,7 +7,7 @@ import { setLanguage } from "../../features/language/languageSlice";
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const currentLang = "es";
+  const currentLang = useSelector((s) => s.language.current);
 
   const toggleLanguage = () => {
     const newLang = currentLang === "es" ? "en" : "es";

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Dice6, Users, ScrollText, ShieldAlert, MapPin, EyeOff, LayoutDashboard, Database, Swords, Wand, Package, NotebookPen, UserRoundSearch, ShieldCheck, ChevronLeft } from 'lucide-react'
 import Card from '../components/ui/Card'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +8,14 @@ import NotesPanel from '../components/notes/NotesPanel'
 
 const Toolkit = () => {
   const { t } = useTranslation()
+  const location = useLocation()
   const [activeTab, setActiveTab] = useState('grid') // 'grid' | 'notes'
+
+  useEffect(() => {
+    if (location.state?.openNotes) {
+      setActiveTab('notes')
+    }
+  }, [location.state])
 
   const playerTools = [
     { id: 'dice', icon: Dice6, label: 'dice.title', active: true, to: '/dice' },
@@ -16,16 +23,16 @@ const Toolkit = () => {
     { id: 'attack', icon: Swords, label: 'dice.presets.attack', active: false },
     { id: 'summary', icon: UserRoundSearch, label: 'toolkit.character_summary', active: false },
     { id: 'player', icon: ShieldCheck, label: 'common.player', active: false },
-    { id: 'inventory', icon: Package, label: 'Inventory', active: false }
+    { id: 'inventory', icon: Package, label: 'toolkit.inventory', active: false }
   ]
 
   const gmTools = [
-    { icon: LayoutDashboard, label: 'GM Dashboard', active: false },
+    { icon: LayoutDashboard, label: 'toolkit.gm_dashboard', active: false },
     { icon: ShieldAlert, label: 'toolkit.encounter_tracker', active: false },
-    { icon: EyeOff, label: 'Hidden Rolls', active: false },
+    { icon: EyeOff, label: 'toolkit.hidden_rolls', active: false },
     { icon: Users, label: 'toolkit.npc_manager', active: false },
-    { icon: MapPin, label: 'Maps Explorer', active: false },
-    { icon: Database, label: 'Bestiary', active: false }
+    { icon: MapPin, label: 'toolkit.maps_explorer', active: false },
+    { icon: Database, label: 'toolkit.bestiary', active: false }
   ]
 
   const ToolCard = ({ icon: Icon, label, active, to, onClick, delay }) => (

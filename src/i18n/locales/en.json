@@ -5,6 +5,7 @@
     "gm": "Game Master",
     "coming_soon": "Coming Soon",
     "back": "Back",
+    "close": "Close",
     "language": "Language",
     "spanish": "Spanish",
     "english": "English"
@@ -15,6 +16,27 @@
     "toolkit": "Toolkit"
   },
   "home": {
+    "beta_badge": "Beta v1.0",
+    "player_feature_tags": [
+      "Dice roller",
+      "Notes",
+      "Character summary",
+      "Initiative view"
+    ],
+    "gm_feature_tags": [
+      "GM dashboard",
+      "Encounters",
+      "Hidden rolls",
+      "Quick NPC manager"
+    ],
+    "preview": {
+      "dashboard": "Dashboard",
+      "npcs": "NPCs",
+      "notes": "Notes",
+      "encounter": "Encounter",
+      "maps": "Maps",
+      "secrets": "Secrets"
+    },
     "hero_title": "Your adventures, powered by fate",
     "hero_subtitle": "The ultimate tool for your tabletop RPG sessions. Fast, intuitive, and ready for action.",
     "cta_dice": "Open Dice Roller",
@@ -38,6 +60,13 @@
     "total": "Total",
     "individual": "Individual",
     "number_of_dice": "Number of Dice",
+    "session_badge": "Session: Alpha",
+    "quick_notes_title": "Quick session notes",
+    "quick_notes_placeholder": "Jot something down and save it to your notes…",
+    "save_to_notes": "Save to notes",
+    "go_to_notes": "Open full notes",
+    "saved_to_notes_pill": "Saved to notes",
+    "quick_note_title": "Quick note",
     "presets": {
       "title": "Quick Presets",
       "attack": "Attack",
@@ -54,7 +83,19 @@
     "npc_manager": "NPC Manager",
     "encounter_tracker": "Encounter Tracker",
     "notes": "Session Notes",
-    "character_summary": "Character Summary"
+    "character_summary": "Character Summary",
+    "inventory": "Inventory",
+    "gm_dashboard": "GM Dashboard",
+    "hidden_rolls": "Hidden Rolls",
+    "maps_explorer": "Maps Explorer",
+    "bestiary": "Bestiary"
+  },
+  "floating": {
+    "panel_title": "Rollox panel",
+    "roll_btn": "Roll",
+    "footer_tagline": "Ready for adventure",
+    "minimize": "Minimize panel",
+    "open_panel": "Open dice panel"
   },
   "settings": {
     "title": "Settings",
@@ -70,12 +111,17 @@
     "delete": "Delete Note",
     "empty": "No notes yet",
     "title_placeholder": "Title (optional)",
-    "content_placeholder": "Write something important..."
+    "content_placeholder": "Write something important...",
+    "edited": "Edited"
   },
   "presets": {
-    "new_preset": "New Preset",
-    "edit_preset": "Edit Preset",
-    "save_preset": "Save Preset",
+    "new_preset": "New preset",
+    "edit_preset": "Edit preset",
+    "save_preset": "Save preset",
+    "save_all_system": "Save changes",
+    "edit_system_presets": "Edit system presets",
+    "edit_system_hint": "Adjust quantity, die type, and modifier. Names follow the active language.",
+    "name_placeholder": "e.g. Reckless attack",
     "custom_presets": "Custom",
     "system_presets": "System",
     "fields": {
@@ -85,5 +131,11 @@
       "mod": "Bonus",
       "category": "Category"
     }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "github": "GitHub",
+    "twitter": "Twitter",
+    "tagline": "Powered by crits and natural ones. Not affiliated with any RPG publisher."
   }
 }
