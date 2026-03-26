@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  currentSession: null, // { id, name, gameSystem, status, createdAt, updatedAt, createdBy, adminId, maxParticipants }
-  participants: [], // Array of { id, name, role }
+  currentSession: null, 
+  sessions: [], // Track all sessions created
+  participants: [], 
   activeParticipantId: null,
   availableGameSystems: [
     { id: 'pathfinder', label: 'Pathfinder' },
@@ -25,7 +26,7 @@ const sessionSlice = createSlice({
       const sessionId = 'session-' + Date.now();
       const adminId = 'user-' + Date.now();
       
-      state.currentSession = {
+      const newSession = {
         id: sessionId,
         name,
         gameSystem,
@@ -36,6 +37,9 @@ const sessionSlice = createSlice({
         adminId: adminId,
         maxParticipants
       };
+      
+      state.currentSession = newSession;
+      state.sessions.push(newSession);
       
       const adminParticipant = {
         id: adminId,
@@ -66,6 +70,7 @@ const sessionSlice = createSlice({
       state.activeParticipantId = action.payload;
     },
     endSession: (state) => {
+      // We keep the session in state.sessions, but clear the active one
       state.currentSession = null;
       state.participants = [];
       state.activeParticipantId = null;

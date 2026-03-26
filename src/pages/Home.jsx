@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import CurrentSessionCard from '../components/session/CurrentSessionCard'
 import SessionSetup from '../components/session/SessionSetup'
+import DJSummarySessions from '../components/session/DJSummarySessions'
 import { useState } from 'react'
 
 const Home = () => {
@@ -98,6 +99,11 @@ const Home = () => {
             </motion.div>
           </>
         )}
+      </section>
+
+      {/* DJ Summary Sessions Panel */}
+      <section className="animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300">
+         <DJSummarySessions />
       </section>
 
       {/* Perspectives Section */}

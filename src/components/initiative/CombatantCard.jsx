@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeCombatant, setCombatantVisibility } from '../../features/initiative/initiativeSlice';
+import { removeCombatant, setCombatantVisibility, updateHp } from '../../features/initiative/initiativeSlice';
 import ActionCounter from './ActionCounter';
-import { Trash2, Eye, EyeOff, MessageSquare } from 'lucide-react';
+import { Trash2, Eye, EyeOff, MessageSquare, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const CombatantCard = ({ combatant, isActive, viewMode }) => {
@@ -50,19 +50,20 @@ const CombatantCard = ({ combatant, isActive, viewMode }) => {
       <div className={`bg-slate-900/95 backdrop-blur-xl rounded-[23px] overflow-hidden p-4 flex items-center justify-between gap-4 h-full relative ${isHidden ? 'opacity-60 saturate-[0.5]' : ''}`}>
         
         {/* Initiative Number Badge */}
-        <div className={`w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center font-black text-lg italic tracking-tighter shadow-lg transition-all ${
+        <div className={`w-14 h-14 flex-shrink-0 rounded-2xl flex flex-col items-center justify-center font-black italic tracking-tighter shadow-lg transition-all ${
           isActive 
-            ? 'bg-amber-500 text-slate-900 scale-110 rotate-2' 
-            : 'bg-slate-950/80 text-slate-500 border border-slate-800'
+            ? 'bg-amber-500 text-slate-900 scale-105 rotate-1' 
+            : 'bg-slate-950 text-slate-500 border border-slate-800'
         }`}>
-          {initiative}
+          <span className="text-[10px] uppercase opacity-50 mb-[-4px]">Init</span>
+          <span className="text-xl">{initiative}</span>
         </div>
 
         {/* Combatant Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <h4 className={`text-sm font-black italic uppercase truncate transition-colors ${
-              isActive ? 'text-white' : 'text-slate-300'
+        <div className="flex-1 min-w-0 py-1">
+          <div className="flex items-center gap-2 mb-2">
+            <h4 className={`text-base font-black italic uppercase truncate transition-colors ${
+              isActive ? 'text-white' : 'text-slate-200'
             }`}>
               {name}
             </h4>
@@ -72,6 +73,42 @@ const CombatantCard = ({ combatant, isActive, viewMode }) => {
               </span>
             )}
           </div>
+          
+          {/* HP Bar */}
+          <div className="flex flex-col gap-1.5 mb-2">
+             <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
+                   <Heart size={10} className={combatant.hp?.current <= (combatant.hp?.max * 0.3) ? 'text-rose-500 animate-pulse' : 'text-rose-500/50'} />
+                   <div className="h-1.5 flex-1 bg-slate-950 rounded-full w-32 overflow-hidden border border-slate-800/50">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${Math.min(100, (combatant.hp?.current / combatant.hp?.max) * 100)}%` }}
+                        className={`h-full rounded-full ${
+                          combatant.hp?.current <= (combatant.hp?.max * 0.3) ? 'bg-rose-500' : 
+                          combatant.hp?.current <= (combatant.hp?.max * 0.6) ? 'bg-amber-500' : 'bg-emerald-500'
+                        }`}
+                      />
+                   </div>
+                </div>
+                {viewMode === 'gm' || type === 'player-character' ? (
+                   <div className="flex items-center gap-1">
+                      <input 
+                        type="number" 
+                        value={combatant.hp?.current}
+                        onChange={(e) => dispatch(updateHp({ id, current: parseInt(e.target.value) }))}
+                        className="w-10 bg-transparent text-[10px] font-black text-rose-400 text-right focus:outline-none"
+                      />
+                      <span className="text-[9px] text-slate-700">/</span>
+                      <span className="text-[10px] font-black text-slate-500">{combatant.hp?.max}</span>
+                   </div>
+                ) : (
+                   <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest italic">
+                      {combatant.hp?.current <= 0 ? 'Abatido' : combatant.hp?.current <= (combatant.hp?.max * 0.25) ? 'Crítico' : 'Activo'}
+                   </span>
+                )}
+             </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-2">
             <span className={`px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest bg-gradient-to-r ${typeGradients[type] || 'from-slate-700 to-slate-800'} text-white shadow-sm`}>
               {t(`initiative.types.${type}`, type)}

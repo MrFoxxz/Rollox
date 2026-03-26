@@ -23,6 +23,7 @@ const LastRollResult = () => {
 
   const isCrit = lastRoll.diceType === 20 && lastRoll.rawResults.includes(20);
   const isFumble = lastRoll.diceType === 20 && lastRoll.rawResults.includes(1);
+  const diceSum = lastRoll.rawResults.reduce((a, b) => a + b, 0);
 
   return (
     <AnimatePresence mode="wait">
@@ -55,11 +56,20 @@ const LastRollResult = () => {
 
         <div className="p-6 flex flex-col items-center text-center">
             <div className="flex items-end gap-3 mb-6">
-                <div className="text-6xl font-black text-white italic tracking-tighter drop-shadow-2xl flex items-baseline gap-1">
-                   {lastRoll.total}
-                   {lastRoll.modifier !== 0 && (
-                     <span className="text-xl text-slate-500 font-bold">{lastRoll.modifier > 0 ? '+' : ''}{lastRoll.modifier}</span>
-                   )}
+                <div className="flex flex-col">
+                  <div className="text-6xl font-black text-white italic tracking-tighter drop-shadow-2xl flex items-baseline gap-2">
+                     {lastRoll.total}
+                      {lastRoll.modifier !== 0 && (
+                        <div className="flex flex-col -mb-2 ml-4 border-l-2 border-slate-800/50 pl-4 items-start">
+                           <span className="text-2xl text-amber-500 font-black italic leading-none">
+                              {diceSum}
+                           </span>
+                           <span className="text-xl text-slate-500 font-bold italic leading-none mt-1">
+                              {lastRoll.modifier > 0 ? '+' : ''}{lastRoll.modifier}
+                           </span>
+                        </div>
+                      )}
+                  </div>
                 </div>
                 {isCrit && <Sparkles className="text-emerald-400 animate-bounce mb-2" size={32} />}
                 {isFumble && <AlertCircle className="text-rose-400 animate-bounce mb-2" size={32} />}

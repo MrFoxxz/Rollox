@@ -9,6 +9,8 @@ import notificationsReducer from '../features/notifications/notificationsSlice'
 import gameConfigReducer from '../features/gameConfig/gameConfigSlice'
 import historyReducer from '../features/history/historySlice'
 import initiativeReducer from '../features/initiative/initiativeSlice'
+import toolkitReducer from '../features/toolkit/toolkitSlice'
+
 import { loadFromLocalStorage, saveToLocalStorage } from './localStorageMiddleware'
 import i18n from '../i18n'
 
@@ -29,6 +31,7 @@ export const store = configureStore({
     gameConfig: gameConfigReducer,
     history: historyReducer,
     initiative: initiativeReducer,
+    toolkit: toolkitReducer,
   },
   preloadedState
 })

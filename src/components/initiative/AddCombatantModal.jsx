@@ -21,6 +21,7 @@ const AddCombatantModal = ({ isOpen, onClose }) => {
     initiative: 10,
     isHidden: false,
     notes: '',
+    hp: { current: 10, max: 10 },
   });
 
   const handleSubmit = (e) => {
@@ -51,6 +52,7 @@ const AddCombatantModal = ({ isOpen, onClose }) => {
       initiative: 10,
       isHidden: false,
       notes: '',
+      hp: { current: 10, max: 10 },
     });
   };
 
@@ -102,6 +104,27 @@ const AddCombatantModal = ({ isOpen, onClose }) => {
               className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-amber-500 outline-none transition-all text-center font-bold"
               value={formData.initiative}
               onChange={e => setFormData({ ...formData, initiative: parseInt(e.target.value) || 0 })}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest italic mb-1">{t('common.hp_current', 'Current HP')}</label>
+            <input
+              type="number"
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-amber-500 outline-none transition-all text-center font-bold border-rose-500/20"
+              value={formData.hp.current}
+              onChange={e => setFormData({ ...formData, hp: { ...formData.hp, current: parseInt(e.target.value) || 0 } })}
+            />
+          </div>
+          <div>
+            <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest italic mb-1">{t('common.hp_max', 'Max HP')}</label>
+            <input
+              type="number"
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-amber-500 outline-none transition-all text-center font-bold"
+              value={formData.hp.max}
+              onChange={e => setFormData({ ...formData, hp: { ...formData.hp, max: parseInt(e.target.value) || 0 } })}
             />
           </div>
         </div>

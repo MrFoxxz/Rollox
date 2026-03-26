@@ -1,15 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  notes: [
-    { 
-      id: 'welcome-note', 
-      title: 'Bienvenido a Rollox', 
-      content: 'Tus notas de sesión se guardarán aquí. Úsalas para pistas, NPCs o tesoros.', 
-      createdAt: new Date().toISOString(), 
-      updatedAt: new Date().toISOString() 
-    }
-  ]
+  notes: [] // Moved default note to a helper or dynamic initialization if needed
 };
 
 const notesSlice = createSlice({
@@ -17,10 +9,17 @@ const notesSlice = createSlice({
   initialState,
   reducers: {
     addNote: (state, action) => {
-      // action.payload: { title, content }
+      // action.payload: { title, content, sessionId, authorId, authorName, visibility, tags }
       const newNote = {
-        ...action.payload,
         id: 'note-' + Math.random().toString(36).substr(2, 9),
+        title: '',
+        content: '',
+        sessionId: null, // Global if null, or link to session
+        authorId: 'local-user',
+        authorName: 'Local User',
+        visibility: 'shared', // 'shared' | 'gm-private' | 'player-private'
+        tags: [],
+        ...action.payload,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };

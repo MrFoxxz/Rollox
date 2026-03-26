@@ -16,7 +16,13 @@
     "delete": "Delete",
     "edit": "Edit",
     "add": "Add",
-    "you": "You"
+    "you": "You",
+    "hp_current": "Current HP",
+    "hp_max": "Max HP",
+    "name": "Name",
+    "notes": "Notes",
+    "read": "Read",
+    "clear_all": "Clear all"
   },
   "nav": {
     "home": "Home",
@@ -62,7 +68,7 @@
   "dice": {
     "title": "Dice Roller",
     "roll": "Roll!",
-    "modifier": "Modifier",
+    "modifier": "Mod",
     "history": "Roll History",
     "no_history": "Legendary deeds await...",
     "clear_history": "Clear history",
@@ -70,6 +76,7 @@
     "individual": "Individual",
     "number_of_dice": "Number of Dice",
     "session_badge": "Session: Alpha",
+    "quick_presets": "Presets",
     "quick_notes_title": "Quick session notes",
     "quick_notes_placeholder": "Jot something down and save it to your notes…",
     "save_to_notes": "Save to notes",
@@ -85,8 +92,9 @@
       "initiative": "Initiative"
     },
     "no_active_session": "Local Mode (No Session)",
-    "history_limit_note": "Last 50 entries only",
+    "history_limit_note": "Only the last 50 entries",
     "formula": "Formula",
+    "dice_sum": "Sum",
     "last_roll": "Latest Roll"
   },
   "initiative": {
@@ -149,7 +157,18 @@
     "mark_read": "Mark read",
     "clear": "Clear",
     "no_activity": "No recent activity",
-    "manage_title": "Session Settings"
+    "manage_title": "Session Settings",
+    "notes_linked": "Session Notes",
+    "visibility": {
+      "shared": "Shared",
+      "gm-private": "GM Only",
+      "player-private": "Private Note"
+    },
+    "no_active_session": "No Active Session",
+    "start_adventure": "Start Adventure",
+    "gm_quick_actions": "GM Control Panel",
+    "active_info": "Session Status",
+    "participants_active": "Active Members"
   },
   "roles": {
     "admin": "Admin",
@@ -167,13 +186,19 @@
     "inventory": "Inventory",
     "gm_dashboard": "GM Dashboard",
     "hidden_rolls": "Hidden Rolls",
-    "maps_explorer": "Maps Explorer",
-    "bestiary": "Bestiary"
+    "maps_explorer": "Maps",
+    "bestiary": "Bestiary",
+    "session_toolkit": "Session Toolkit",
+    "tabs": {
+       "rolls": "Rolls",
+       "turns": "Turns",
+       "messages": "Messages"
+    }
   },
   "floating": {
     "panel_title": "Rollox panel",
     "roll_btn": "Roll",
-    "footer_tagline": "Ready for adventure",
+    "footer_tagline": "",
     "minimize": "Minimize panel",
     "open_panel": "Open dice panel"
   },

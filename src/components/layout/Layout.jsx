@@ -1,6 +1,7 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
 import FloatingDicePanel from '../dice/FloatingDicePanel'
+import FloatingNotesPanel from '../dice/FloatingNotesPanel'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 
@@ -36,6 +37,7 @@ const Layout = ({ children }) => {
       </main>
 
       <FloatingDicePanel />
+      <FloatingNotesPanel />
 
       <Footer />
     </div>

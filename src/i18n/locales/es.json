@@ -13,7 +13,13 @@
     "combat": "Combate",
     "now": "Ahora",
     "english": "Inglés",
-    "spanish": "Español"
+    "spanish": "Español",
+    "hp_current": "Vida Actual",
+    "hp_max": "Vida Máxima",
+    "name": "Nombre",
+    "notes": "Notas",
+    "read": "Leído",
+    "clear_all": "Limpiar todo"
   },
   "nav": {
     "home": "Inicio",
@@ -59,7 +65,7 @@
   "dice": {
     "title": "Lanzador de Dados",
     "roll": "¡Rodar!",
-    "modifier": "Modificador",
+    "modifier": "Mod",
     "history": "Historial de Dados",
     "no_history": "Hazañas legendarias esperan...",
     "clear_history": "Limpiar historial",
@@ -67,6 +73,7 @@
     "individual": "Individuales",
     "number_of_dice": "Cantidad de Dados",
     "session_badge": "Sesión: Alpha",
+    "quick_presets": "Preajustes",
     "quick_notes_title": "Notas rápidas de sesión",
     "quick_notes_placeholder": "Escribe un recordatorio y guárdalo en tus notas…",
     "save_to_notes": "Guardar en notas",
@@ -84,6 +91,7 @@
     "no_active_session": "Modo Local (Sin Sesión)",
     "history_limit_note": "Solo los últimos 50 registros",
     "formula": "Fórmula",
+    "dice_sum": "Suma",
     "last_roll": "Última Tirada"
   },
   "initiative": {
@@ -136,7 +144,7 @@
     "max_participants": "Máximo de Participantes",
     "start_session": "Comenzar Sesión",
     "active_session": "Sesión Activa",
-    "playing_as": "Jugando como",
+    "playing_as": "Persona actual",
     "select_player": "Seleccionar",
     "end_session": "Finalizar Sesión",
     "active_hero": "Héroe Activo",
@@ -146,7 +154,18 @@
     "mark_read": "Leídas",
     "clear": "Limpiar",
     "no_activity": "Sin actividad reciente",
-    "manage_title": "Configuración de Sesión"
+    "manage_title": "Configuración de Sesión",
+    "notes_linked": "Notas de esta Sesión",
+    "visibility": {
+      "shared": "Compartido",
+      "gm-private": "Solo para el DJ",
+      "player-private": "Nota Privada"
+    },
+    "no_active_session": "Sin Sesión Activa",
+    "start_adventure": "Iniciar Aventura",
+    "gm_quick_actions": "Panel de Control DJ",
+    "active_info": "Estado de la Sesión",
+    "participants_active": "Miembros Activos"
   },
   "roles": {
     "admin": "Admin",
@@ -165,12 +184,18 @@
     "gm_dashboard": "Panel DJ",
     "hidden_rolls": "Tiradas Ocultas",
     "maps_explorer": "Mapas",
-    "bestiary": "Bestiario"
+    "bestiary": "Bestiario",
+    "session_toolkit": "Toolkit de Sesión",
+    "tabs": {
+       "rolls": "Tiradas",
+       "turns": "Turnos",
+       "messages": "Mensajes"
+    }
   },
   "floating": {
     "panel_title": "Panel Rollox",
     "roll_btn": "Rodar",
-    "footer_tagline": "Listo para la aventura",
+    "footer_tagline": "",
     "minimize": "Minimizar",
     "open_panel": "Abrir panel"
   },
@@ -188,6 +213,9 @@
     "save": "Guardar Nota",
     "delete": "Eliminar Nota",
     "empty": "Sin notas aún",
+    "count": "Notas de Sesión",
+    "untitled": "Sin título",
+    "delete_confirm": "¿Seguro que quieres eliminar esta nota?",
     "title_placeholder": "Título (opcional)",
     "content_placeholder": "Escribe algo importante...",
     "edited": "Editada",

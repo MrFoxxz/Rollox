@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { addNote } from "../features/notes/notesSlice";
 import { addHistoryEntry, clearHistory } from "../features/history/historySlice";
 import { addNotification } from "../features/notifications/notificationsSlice";
-import ParticipantList from "../components/session/ParticipantList";
-import ActivityFeed from "../components/notifications/ActivityFeed";
 import LastRollResult from "../components/dice/LastRollResult";
 import InitiativeTracker from "../components/initiative/InitiativeTracker";
 import {
@@ -22,7 +20,6 @@ import {
   Wand,
   Edit2,
   Sparkles,
-  MessageSquareQuote,
   Settings2,
   Footprints,
   History,
@@ -73,7 +70,6 @@ const DiceRoller = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSystemPresetsOpen, setIsSystemPresetsOpen] = useState(false);
   const [editingPreset, setEditingPreset] = useState(null);
-  const [quickNote, setQuickNote] = useState("");
   const [activeTab, setActiveTab] = useState("dice"); // "dice" | "combat"
   const [saveToast, setSaveToast] = useState(false);
 
@@ -87,18 +83,6 @@ const DiceRoller = () => {
     return () => window.clearTimeout(id);
   }, [saveToast]);
 
-  const handleQuickSaveToNotes = () => {
-    const text = quickNote.trim();
-    if (!text) return;
-    dispatch(
-      addNote({
-        title: t("dice.quick_note_title"),
-        content: text,
-      }),
-    );
-    setQuickNote("");
-    showSavedToast();
-  };
 
   const goToFullNotes = () => {
     navigate("/toolkit", { state: { openNotes: true } });
@@ -504,38 +488,6 @@ const DiceRoller = () => {
               </div>
             </section>
 
-            <Card className="p-5 border-slate-800/80">
-              <div className="flex items-center gap-2 mb-3">
-                <MessageSquareQuote size={16} className="text-primary-500 shrink-0" />
-                <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest italic">
-                  {t("dice.quick_notes_title")}
-                </h3>
-              </div>
-              <textarea
-                value={quickNote}
-                onChange={(e) => setQuickNote(e.target.value)}
-                placeholder={t("dice.quick_notes_placeholder")}
-                rows={3}
-                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-primary-500/50 outline-none resize-y min-h-[88px] mb-4"
-              />
-              <div className="flex flex-wrap items-center gap-3">
-                <Button
-                  type="button"
-                  className="h-10 px-4 text-xs uppercase italic tracking-widest"
-                  onClick={handleQuickSaveToNotes}
-                  disabled={!quickNote.trim()}
-                >
-                  {t("dice.save_to_notes")}
-                </Button>
-                <button
-                  type="button"
-                  onClick={goToFullNotes}
-                  className="text-xs font-bold text-primary-500 hover:text-primary-400 uppercase tracking-widest italic underline-offset-4 hover:underline"
-                >
-                  {t("dice.go_to_notes")}
-                </button>
-              </div>
-            </Card>
 
             {/* Big Result Area */}
             <AnimatePresence mode="wait">
@@ -590,7 +542,19 @@ const DiceRoller = () => {
                               : "text-white"
                         }`}
                       >
-                        {lastRoll.total}
+                        <div className="flex items-center gap-6">
+                           <span className="shrink-0">{lastRoll.total}</span>
+                           {lastRoll.modifier !== 0 && (
+                             <div className="flex flex-col border-l-4 border-slate-800/50 pl-6 items-start">
+                                <span className="text-4xl text-amber-500 font-black italic tracking-normal">
+                                   {lastRoll.rawResults.reduce((a, b) => a + b, 0)}
+                                </span>
+                                <span className="text-2xl text-slate-600 font-black italic leading-none mt-2">
+                                   {lastRoll.modifier > 0 ? "+" : ""}{lastRoll.modifier}
+                                </span>
+                             </div>
+                           )}
+                        </div>
                       </motion.div>
 
                       <div className="flex flex-wrap justify-center gap-3">
@@ -624,23 +588,12 @@ const DiceRoller = () => {
               )}
             </AnimatePresence>
             
-            {/* Activity Sensor below the main panel for GM/Admin */}
-            {session && (participants.find(p => p.id === activeParticipantId)?.role === 'admin' || participants.find(p => p.id === activeParticipantId)?.role === 'gm') && (
-              <div className="mt-8">
-                 <ActivityFeed />
-              </div>
-            )}
           </>
         ) : (
           <div className="space-y-8">
             <div className="bg-slate-900/50 rounded-[32px] border border-slate-800/80 p-1 min-h-[600px] overflow-hidden">
                <InitiativeTracker />
             </div>
-            
-            {/* Activity Sensor below the combat tracker as well */}
-            {session && (participants.find(p => p.id === activeParticipantId)?.role === 'admin' || participants.find(p => p.id === activeParticipantId)?.role === 'gm') && (
-               <ActivityFeed />
-            )}
           </div>
         )}
       </div>
@@ -750,16 +703,28 @@ const DiceRoller = () => {
                               )}
                             </div>
                           </div>
-                          <div
-                            className={`text-4xl font-black italic transition-colors leading-none shrink-0 ${
-                              hasCrit
-                                ? "text-emerald-500"
-                                : hasFumble
-                                  ? "text-rose-500"
-                                  : "text-white group-hover:text-amber-500"
-                            }`}
-                          >
-                            {roll.total}
+                          <div className="flex items-center gap-4">
+                            <div
+                              className={`text-4xl font-black italic transition-colors leading-none shrink-0 ${
+                                hasCrit
+                                  ? "text-emerald-500 shadow-emerald-500/10"
+                                  : hasFumble
+                                    ? "text-rose-500 shadow-rose-500/10"
+                                    : "text-white group-hover:text-amber-500"
+                              }`}
+                            >
+                              {roll.total}
+                            </div>
+                            {roll.modifier !== 0 && (
+                               <div className="flex flex-col border-l-2 border-slate-800/50 pl-3 items-start group-hover:border-amber-500/30 transition-colors">
+                                  <span className="text-sm text-amber-500 font-black italic leading-none">
+                                     {roll.rawResults.reduce((a, b) => a + b, 0)}
+                                  </span>
+                                  <span className="text-[10px] text-slate-600 font-black italic leading-none mt-1">
+                                     {roll.modifier > 0 ? "+" : ""}{roll.modifier}
+                                  </span>
+                               </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -770,15 +735,9 @@ const DiceRoller = () => {
           </div>
         </Card>
 
-        {/* Bottom: Secondary Info */}
-        {session && (
-          <div className="mt-auto opacity-80 hover:opacity-100 transition-opacity">
-            <ParticipantList />
-          </div>
-        )}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default DiceRoller;

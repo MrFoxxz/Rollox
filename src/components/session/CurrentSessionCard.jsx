@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { endSession } from "../../features/session/sessionSlice";
 import { useTranslation } from "react-i18next";
 import ActiveParticipantSelector from "./ActiveParticipantSelector";
@@ -31,12 +32,16 @@ const CurrentSessionCard = () => {
   const gameSystemLabel =
     gameConfigs[session.gameSystem]?.label || session.gameSystem;
 
+  const sessionPath = activeParticipant?.role === 'gm' || activeParticipant?.role === 'admin' 
+    ? '/session/gm' 
+    : '/session/player';
+
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl relative">
       <div className="bg-amber-500/10 border-b border-slate-800 p-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center text-slate-900">
-            <span className="material-icons-round">auto_awesome</span>
+          <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center text-slate-900 shadow-lg shadow-amber-500/20">
+             <Sparkles size={24} />
           </div>
           <div>
             <h3 className="font-bold text-slate-100 text-lg leading-tight">
@@ -96,13 +101,32 @@ const CurrentSessionCard = () => {
           ))}
         </div>
         <div className="flex-1"></div>
-        <button
-          onClick={() => setIsManageModalOpen(true)}
-          className="text-xs font-black uppercase tracking-widest text-amber-500 hover:text-amber-400 px-4 py-2 rounded-xl border border-amber-500/20 hover:bg-amber-500/5 transition-all flex items-center gap-2 italic"
-        >
-          <Settings size={14} />
-          {t("session.manage", "Manage")}
-        </button>
+         <div className="flex items-center gap-2">
+            {(activeParticipant?.role === 'gm' || activeParticipant?.role === 'admin') && (
+              <Link
+                to="/session/gm"
+                className="text-[10px] font-black uppercase tracking-widest text-purple-400 hover:text-purple-300 px-3 py-2 rounded-xl border border-purple-500/20 hover:bg-purple-500/10 transition-all flex items-center gap-2 italic"
+                title="DJ Panel"
+              >
+                <Users size={14} />
+                DJ Panel
+              </Link>
+            )}
+            <Link
+              to={sessionPath}
+              className="text-xs font-black uppercase tracking-widest bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-3 rounded-2xl transition-all flex items-center gap-2 italic shadow-lg shadow-amber-500/20 active:scale-95"
+            >
+              <LayoutDashboard size={16} />
+              {t("session.start_adventure", "Iniciar Aventura")}
+            </Link>
+            <button
+              onClick={() => setIsManageModalOpen(true)}
+              className="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-white px-3 py-3 rounded-xl border border-slate-800 hover:bg-slate-800 transition-all flex items-center gap-2 italic"
+              title={t("session.manage", "Manage")}
+            >
+              <Settings size={16} />
+            </button>
+         </div>
       </div>
 
       <ManageSessionModal

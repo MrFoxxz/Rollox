@@ -10,7 +10,7 @@ const initialState = {
     startedAt: null,
     updatedAt: null,
   },
-  combatants: [], // Array of combatant objects: { id, name, type, participantId, roleOwner, initiative, isHidden, isActive, notes, actions: { current, max } }
+  combatants: [], // Array of combatant objects: { id, name, type, participantId, roleOwner, initiative, isHidden, isActive, notes, actions: { current, max }, hp: { current, max } }
   viewMode: 'gm', // 'gm' or 'player'
 };
 
@@ -38,6 +38,7 @@ const initiativeSlice = createSlice({
         ...action.payload,
         id: `combatant-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         actions: action.payload.actions || { current: 3, max: 3 },
+        hp: action.payload.hp || { current: 10, max: 10 },
         isActive: false,
       };
       state.combatants.push(combatant);
@@ -100,6 +101,14 @@ const initiativeSlice = createSlice({
          combatant.actions.current = amount ?? combatant.actions.max;
        }
     },
+    updateHp: (state, action) => {
+      const { id, current, max } = action.payload;
+      const combatant = state.combatants.find(c => c.id === id);
+      if (combatant) {
+        if (current !== undefined) combatant.hp.current = current;
+        if (max !== undefined) combatant.hp.max = max;
+      }
+    },
     setViewMode: (state, action) => {
       state.viewMode = action.payload; // 'gm' or 'player'
     },
@@ -124,6 +133,7 @@ export const {
   resetActions,
   setViewMode,
   setCombatantVisibility,
+  updateHp,
 } = initiativeSlice.actions;
 
 export default initiativeSlice.reducer;
