@@ -1,40 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  history: [],
-  lastRoll: null,
-  sessionId: 'session-' + Math.random().toString(36).substr(2, 9)
+  currentDice: [], // Current selected dice to roll
+  modifier: 0,
+  isRolling: false
 };
 
 const diceSlice = createSlice({
   name: 'dice',
   initialState,
   reducers: {
-    addRoll: (state, action) => {
-      // action.payload: { total, individual, diceConfig, timestamp, sessionId }
-      const rollWithSession = { 
-        ...action.payload, 
-        id: action.payload.id || Date.now(),
-        sessionId: state.sessionId 
-      };
-      state.lastRoll = rollWithSession;
-      state.history.unshift(rollWithSession);
-      if (state.history.length > 50) {
-        state.history.pop();
+    addDie: (state, action) => {
+      state.currentDice.push(action.payload);
+    },
+    removeDie: (state, action) => {
+      const index = state.currentDice.indexOf(action.payload);
+      if (index > -1) {
+        state.currentDice.splice(index, 1);
       }
     },
-    clearHistory: (state) => {
-      state.history = [];
-      state.lastRoll = null;
+    setModifier: (state, action) => {
+      state.modifier = action.payload;
     },
-    clearLastRoll: (state) => {
-      state.lastRoll = null;
+    resetRoller: (state) => {
+      state.currentDice = [];
+      state.modifier = 0;
     },
-    updateSessionId: (state) => {
-      state.sessionId = 'session-' + Math.random().toString(36).substr(2, 9);
+    setIsRolling: (state, action) => {
+      state.isRolling = action.payload;
     }
   }
 });
 
-export const { addRoll, clearHistory, clearLastRoll, updateSessionId } = diceSlice.actions;
+export const { addDie, removeDie, setModifier, resetRoller, setIsRolling } = diceSlice.actions;
 export default diceSlice.reducer;

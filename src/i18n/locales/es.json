@@ -3,17 +3,22 @@
     "app_name": "Rollox",
     "player": "Jugador",
     "gm": "Director de Juego",
-    "coming_soon": "Próximamente",
-    "back": "Volver",
-    "close": "Cerrar",
-    "language": "Idioma",
-    "spanish": "Español",
-    "english": "Inglés"
+    "coming_soon": "Pronto",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "you": "Tú",
+    "combat": "Combate",
+    "now": "Ahora",
+    "english": "Inglés",
+    "spanish": "Español"
   },
   "nav": {
     "home": "Inicio",
     "dice": "Dados",
-    "toolkit": "Herramientas"
+    "toolkit": "Toolkit"
   },
   "home": {
     "beta_badge": "Beta v1.0",
@@ -24,29 +29,30 @@
       "Vista de iniciativa"
     ],
     "gm_feature_tags": [
-      "Panel de GM",
+      "Panel GM",
       "Encuentros",
       "Tiradas ocultas",
-      "Gestor rápido de NPCs"
+      "Gestor de NPCs"
     ],
     "preview": {
       "dashboard": "Panel",
-      "npcs": "PNJs",
+      "npcs": "NPCs",
       "notes": "Notas",
       "encounter": "Encuentro",
       "maps": "Mapas",
       "secrets": "Secretos"
     },
     "hero_title": "Tus aventuras, impulsadas por el destino",
-    "hero_subtitle": "La herramienta definitiva para tus partidas de rol. Rápida, intuitiva y lista para la acción.",
-    "cta_dice": "Abrir Lanzador de Dados",
+    "hero_subtitle": "La herramienta definitiva para tus sesiones de RPG. Rápida e intuitiva.",
+    "cta_dice": "Abrir Tirador",
+    "cta_session": "Crear Sesión",
     "player_section": {
       "title": "Para Jugadores",
-      "desc": "Gestiona tus ráfagas de dados, notas y resúmenes de personaje con facilidad."
+      "desc": "Gestiona tus dados, notas y resúmenes de personaje con facilidad."
     },
     "gm_section": {
-      "title": "Para Directores de Juego",
-      "desc": "Mantén el control de la sesión con herramientas tácticas y seguimiento de encuentros."
+      "title": "Para el Director",
+      "desc": "Mantén el control de la sesión con herramientas tácticas."
     },
     "features_preview": "Próximas Herramientas"
   },
@@ -54,9 +60,9 @@
     "title": "Lanzador de Dados",
     "roll": "¡Rodar!",
     "modifier": "Modificador",
-    "history": "Historial de Lanzamientos",
-    "clear_history": "Limpiar Historial",
-    "no_history": "No hay lanzamientos aún",
+    "history": "Historial de Dados",
+    "no_history": "Hazañas legendarias esperan...",
+    "clear_history": "Limpiar historial",
     "total": "Total",
     "individual": "Individuales",
     "number_of_dice": "Cantidad de Dados",
@@ -74,55 +80,129 @@
       "skill": "Habilidad",
       "save": "Salvación",
       "initiative": "Iniciativa"
-    }
+    },
+    "no_active_session": "Modo Local (Sin Sesión)",
+    "history_limit_note": "Solo los últimos 50 registros",
+    "formula": "Fórmula",
+    "last_roll": "Última Tirada"
+  },
+  "initiative": {
+    "add_combatant": "Añadir Combatiente",
+    "start_btn": "Iniciar Seguimiento",
+    "end_tracker": "Finalizar Encuentro",
+    "gm_view": "Vista GM",
+    "player_view": "Vista Jugador",
+    "no_combatants": "Sin combatientes aún",
+    "no_session_title": "Sin Sesión Activa",
+    "no_session_desc": "Debes crear o unirte a una sesión para usar el Rastreador de Iniciativa.",
+    "hidden": "Combatiente Oculto",
+    "type": "Tipo",
+    "value": "Iniciativa",
+    "types": {
+      "player-character": "Personaje",
+      "npc": "NPC",
+      "enemy": "Enemigo",
+      "summon": "Invocación",
+      "custom": "Personalizado"
+    },
+    "start_encounters": "Iniciar Combates",
+    "start_desc": "¿Todo listo? Inicia el rastreador para gestionar turnos y acciones.",
+    "end_confirm": "¿Finalizar el rastreador? Se borrarán todos los datos del combate.",
+    "round": "Ronda",
+    "round_n": "Ronda {{round}}",
+    "combatants_count": "{{count}} Combatientes",
+    "next_turn": "Siguiente Turno",
+    "press_space": "Pulsa [Espacio]",
+    "turn_msg": "Turno de {{name}} (Ronda {{round}})",
+    "round_msg": "¡Comienza la Ronda {{round}}!",
+    "added_msg": "{{name}} añadido a la iniciativa.",
+    "remove_confirm": "¿Quitar a {{name}} de la iniciativa?",
+    "actions_remaining": "Acciones Restantes",
+    "view_players": "Mostrar a Jugadores",
+    "hide_players": "Ocultar a Jugadores",
+    "remove_btn": "Quitar",
+    "no_participant": "Sin Participante (NPC/Monstruo)",
+    "gm_only_note": "Visible solo para el Director",
+    "placeholder_notes": "Habilidades, estados, etc.",
+    "owner": "Dueño (Participante)"
+  },
+  "session": {
+    "create_new": "Crear Nueva Sesión",
+    "name": "Nombre de la Sesión",
+    "placeholder_name": "Ej: Campaña de Sombras",
+    "game_system": "Sistema de Juego",
+    "your_name": "Tu Nombre (GM/Admin)",
+    "placeholder_admin": "Ej: Máster Fox",
+    "max_participants": "Máximo de Participantes",
+    "start_session": "Comenzar Sesión",
+    "active_session": "Sesión Activa",
+    "playing_as": "Jugando como",
+    "select_player": "Seleccionar",
+    "end_session": "Finalizar Sesión",
+    "active_hero": "Héroe Activo",
+    "add_player": "Nuevo jugador...",
+    "manage": "Gestionar",
+    "activity": "Actividad",
+    "mark_read": "Leídas",
+    "clear": "Limpiar",
+    "no_activity": "Sin actividad reciente",
+    "manage_title": "Configuración de Sesión"
+  },
+  "roles": {
+    "admin": "Admin",
+    "gm": "GM",
+    "player": "Jugador"
   },
   "toolkit": {
-    "title": "Caja de Herramientas",
-    "player_tools": "Herramientas de Jugador",
-    "gm_tools": "Herramientas de GM",
-    "npc_manager": "Gestor de NPCs",
-    "encounter_tracker": "Rastreador de Encuentros",
+    "title": "Toolkit",
+    "player_tools": "Jugador",
+    "gm_tools": "DJ",
+    "npc_manager": "Gestor NPCs",
+    "encounter_tracker": "Rastreador",
     "notes": "Notas de Sesión",
-    "character_summary": "Resumen de Personaje",
+    "character_summary": "Ficha",
     "inventory": "Inventario",
-    "gm_dashboard": "Panel de GM",
-    "hidden_rolls": "Tiradas ocultas",
-    "maps_explorer": "Explorador de mapas",
+    "gm_dashboard": "Panel DJ",
+    "hidden_rolls": "Tiradas Ocultas",
+    "maps_explorer": "Mapas",
     "bestiary": "Bestiario"
   },
   "floating": {
     "panel_title": "Panel Rollox",
-    "roll_btn": "Lanzar",
+    "roll_btn": "Rodar",
     "footer_tagline": "Listo para la aventura",
-    "minimize": "Minimizar panel",
-    "open_panel": "Abrir panel de dados"
+    "minimize": "Minimizar",
+    "open_panel": "Abrir panel"
   },
   "settings": {
-    "title": "Configuración",
-    "critical_highlight": "Resaltar Críticos d20",
+    "title": "Ajustes",
+    "critical_highlight": "Resaltar Críticos D20",
     "floating_dice": "Dados Flotantes",
     "hide_on_home": "Ocultar en Inicio",
-    "ui_prefs": "Preferencias de Interfaz"
+    "ui_prefs": "Preferencias"
   },
   "notes": {
+    "title": "Notas de Sesión",
     "new": "Nueva Nota",
     "edit": "Editar Nota",
     "save": "Guardar Nota",
     "delete": "Eliminar Nota",
-    "empty": "No hay notas aún",
+    "empty": "Sin notas aún",
     "title_placeholder": "Título (opcional)",
     "content_placeholder": "Escribe algo importante...",
-    "edited": "Editada"
+    "edited": "Editada",
+    "quick_note": "Nota rápida",
+    "saved": "Guardado en notas"
   },
   "presets": {
     "new_preset": "Nuevo preajuste",
     "edit_preset": "Editar preajuste",
     "save_preset": "Guardar preajuste",
     "save_all_system": "Guardar cambios",
-    "edit_system_presets": "Modificar preajustes del sistema",
-    "edit_system_hint": "Ajusta cantidad, tipo de dado y modificador. Los nombres siguen el idioma activo.",
-    "name_placeholder": "Ej.: Ataque enfurecido",
-    "custom_presets": "Personalizados",
+    "edit_system_presets": "Editar preajustes sistema",
+    "edit_system_hint": "Ajusta cantidad, tipo y modificador.",
+    "name_placeholder": "Ej: Ataque temerario",
+    "custom_presets": "Personalizado",
     "system_presets": "Sistema",
     "fields": {
       "name": "Nombre",
@@ -134,8 +214,6 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "github": "GitHub",
-    "twitter": "Twitter",
-    "tagline": "Impulsado por críticos y pifias. Sin afiliación a ninguna editorial de rol."
+    "tagline": "No afiliado con editoriales oficiales."
   }
 }

@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom'
 import { Dice6, ShieldAlert, Sparkles, LayoutDashboard, ScrollText, Users, MapPin, EyeOff } from 'lucide-react'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useSelector } from 'react-redux'
+import CurrentSessionCard from '../components/session/CurrentSessionCard'
+import SessionSetup from '../components/session/SessionSetup'
+import { useState } from 'react'
 
 const Home = () => {
   const { t } = useTranslation()
+  const session = useSelector(state => state.session.currentSession)
+  const [showSetup, setShowSetup] = useState(false)
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -35,27 +41,63 @@ const Home = () => {
           {t('home.hero_title')}
         </motion.h1>
 
-        <motion.p 
-          className="text-slate-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {t('home.hero_subtitle')}
-        </motion.p>
+        {session ? (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-full max-w-md mx-auto mb-12"
+          >
+            <CurrentSessionCard />
+          </motion.div>
+        ) : (
+          <>
+            <motion.p 
+              className="text-slate-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {t('home.hero_subtitle')}
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
-        >
-          <Link to="/dice">
-            <Button size="lg" className="shadow-2xl shadow-primary-500/30 group">
-              <Dice6 size={20} className="mr-2 group-hover:rotate-[360deg] transition-transform duration-700" />
-              {t('home.cta_dice')}
-            </Button>
-          </Link>
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="flex flex-col items-center gap-4"
+            >
+              {!showSetup ? (
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link to="/dice">
+                    <Button size="lg" className="shadow-2xl shadow-primary-500/30 group">
+                      <Dice6 size={20} className="mr-2 group-hover:rotate-[360deg] transition-transform duration-700" />
+                      {t('home.cta_dice')}
+                    </Button>
+                  </Link>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    onClick={() => setShowSetup(true)}
+                    className="border-amber-500/50 text-amber-500 hover:bg-amber-500/10"
+                  >
+                    <Users size={20} className="mr-2" />
+                    {t('home.cta_session', 'Create Session')}
+                  </Button>
+                </div>
+              ) : (
+                <div className="w-full max-w-md animate-in fade-in zoom-in duration-300">
+                  <SessionSetup onComplete={() => setShowSetup(false)} />
+                  <button 
+                    onClick={() => setShowSetup(false)}
+                    className="mt-4 text-slate-500 hover:text-slate-300 text-sm font-bold uppercase tracking-widest"
+                  >
+                    {t('common.cancel', 'Cancel')}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </>
+        )}
       </section>
 
       {/* Perspectives Section */}

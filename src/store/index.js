@@ -4,6 +4,11 @@ import presetsReducer from '../features/presets/presetsSlice'
 import notesReducer from '../features/notes/notesSlice'
 import settingsReducer from '../features/settings/settingsSlice'
 import languageReducer from '../features/language/languageSlice'
+import sessionReducer from '../features/session/sessionSlice'
+import notificationsReducer from '../features/notifications/notificationsSlice'
+import gameConfigReducer from '../features/gameConfig/gameConfigSlice'
+import historyReducer from '../features/history/historySlice'
+import initiativeReducer from '../features/initiative/initiativeSlice'
 import { loadFromLocalStorage, saveToLocalStorage } from './localStorageMiddleware'
 import i18n from '../i18n'
 
@@ -19,6 +24,11 @@ export const store = configureStore({
     notes: notesReducer,
     settings: settingsReducer,
     language: languageReducer,
+    session: sessionReducer,
+    notifications: notificationsReducer,
+    gameConfig: gameConfigReducer,
+    history: historyReducer,
+    initiative: initiativeReducer,
   },
   preloadedState
 })

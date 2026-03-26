@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux'
 import { getD20Status, getD20Classes } from '../../utils/diceUtils'
 
 const DiceResultDisplay = () => {
-  const lastRoll = useSelector(state => state.dice.lastRoll)
+  const lastRoll = useSelector(state => state.history.lastRoll)
   const enableCriticalHighlighting = useSelector(state => state.settings.enableCriticalHighlighting)
 
   if (!lastRoll) return null
 
   // Check if any d20 in results is critical/fumble
-  const containsCritical = lastRoll.diceConfig.dieType === 20 && lastRoll.individual.some(v => v === 20)
-  const containsFumble = lastRoll.diceConfig.dieType === 20 && lastRoll.individual.some(v => v === 1)
+  const containsCritical = lastRoll.diceType === 20 && lastRoll.rawResults.some(v => v === 20)
+  const containsFumble = lastRoll.diceType === 20 && lastRoll.rawResults.some(v => v === 1)
 
   const totalClasses = `text-5xl font-black italic tracking-tighter drop-shadow-xl transition-colors duration-500 ${
     enableCriticalHighlighting && containsCritical ? 'text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]' : 
@@ -33,8 +33,8 @@ const DiceResultDisplay = () => {
         )}
 
         <div className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-1 italic relative z-10">
-          {lastRoll.diceConfig.count}d{lastRoll.diceConfig.dieType}
-          {lastRoll.diceConfig.modifier !== 0 && (lastRoll.diceConfig.modifier > 0 ? ` + ${lastRoll.diceConfig.modifier}` : ` - ${Math.abs(lastRoll.diceConfig.modifier)}`)}
+          {lastRoll.quantity}d{lastRoll.diceType}
+          {lastRoll.modifier !== 0 && (lastRoll.modifier > 0 ? ` + ${lastRoll.modifier}` : ` - ${Math.abs(lastRoll.modifier)}`)}
         </div>
         
         <div className={`${totalClasses} relative z-10`}>
@@ -42,8 +42,8 @@ const DiceResultDisplay = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-1.5 mt-3 max-h-16 overflow-y-auto pr-1 thin-scrollbar relative z-10">
-          {lastRoll.individual.map((val, i) => {
-            const status = enableCriticalHighlighting ? getD20Status(val, lastRoll.diceConfig.dieType) : null
+          {lastRoll.rawResults.map((val, i) => {
+            const status = enableCriticalHighlighting ? getD20Status(val, lastRoll.diceType) : null
             const classStatus = status ? getD20Classes(status) : 'text-slate-400 border-slate-800 bg-slate-900/50'
             
             return (

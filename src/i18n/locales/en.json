@@ -8,7 +8,15 @@
     "close": "Close",
     "language": "Language",
     "spanish": "Spanish",
-    "english": "English"
+    "english": "English",
+    "combat": "Combat",
+    "now": "Now",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "you": "You"
   },
   "nav": {
     "home": "Home",
@@ -40,6 +48,7 @@
     "hero_title": "Your adventures, powered by fate",
     "hero_subtitle": "The ultimate tool for your tabletop RPG sessions. Fast, intuitive, and ready for action.",
     "cta_dice": "Open Dice Roller",
+    "cta_session": "Create Session",
     "player_section": {
       "title": "For Players",
       "desc": "Manage your dice bursts, notes, and character summaries with ease."
@@ -55,8 +64,8 @@
     "roll": "Roll!",
     "modifier": "Modifier",
     "history": "Roll History",
-    "clear_history": "Clear History",
-    "no_history": "No rolls yet",
+    "no_history": "Legendary deeds await...",
+    "clear_history": "Clear history",
     "total": "Total",
     "individual": "Individual",
     "number_of_dice": "Number of Dice",
@@ -74,7 +83,78 @@
       "skill": "Skill Check",
       "save": "Saving Throw",
       "initiative": "Initiative"
-    }
+    },
+    "no_active_session": "Local Mode (No Session)",
+    "history_limit_note": "Last 50 entries only",
+    "formula": "Formula",
+    "last_roll": "Latest Roll"
+  },
+  "initiative": {
+    "add_combatant": "Add Combatant",
+    "start_btn": "Start Tracker",
+    "end_tracker": "End Encounter",
+    "gm_view": "GM View",
+    "player_view": "Player View",
+    "no_combatants": "No combatants yet",
+    "no_session_title": "No Active Session",
+    "no_session_desc": "You must create or join a session to use the Initiative Tracker.",
+    "hidden": "Hidden Combatant",
+    "type": "Type",
+    "value": "Initiative",
+    "types": {
+      "player-character": "Character",
+      "npc": "NPC",
+      "enemy": "Enemy",
+      "summon": "Summon",
+      "custom": "Custom"
+    },
+    "start_encounters": "Start Combat Encounters",
+    "start_desc": "Ready to roll? Start the initiative tracker to manage turns and actions for your tabletop sessions.",
+    "end_confirm": "End the current initiative tracker? All combat data will be cleared.",
+    "round": "Round",
+    "round_n": "Round {{round}}",
+    "combatants_count": "{{count}} Combatants",
+    "next_turn": "Next Turn",
+    "press_space": "Press [Spacebar]",
+    "turn_msg": "{{name}}'s turn (Round {{round}})",
+    "round_msg": "Round {{round}} begins!",
+    "added_msg": "{{name}} was added to the initiative.",
+    "remove_confirm": "Remove {{name}} from initiative?",
+    "actions_remaining": "Actions Remaining",
+    "view_players": "Show to Players",
+    "hide_players": "Hide from Players",
+    "remove_btn": "Remove",
+    "no_participant": "No Participant (NPC/Monster)",
+    "gm_only_note": "Only visible to GM mode",
+    "placeholder_notes": "Abilities, conditions, etc.",
+    "owner": "Owner (Participant)"
+  },
+  "session": {
+    "create_new": "Create New Session",
+    "name": "Session Name",
+    "placeholder_name": "e.g. Shadow Campaign",
+    "game_system": "Game System",
+    "your_name": "Your Name (GM/Admin)",
+    "placeholder_admin": "e.g. Master Fox",
+    "max_participants": "Max Participants",
+    "start_session": "Start Session",
+    "active_session": "Active Session",
+    "playing_as": "Playing as",
+    "select_player": "Select Player",
+    "end_session": "End Session",
+    "active_hero": "Active Hero",
+    "add_player": "New player...",
+    "manage": "Manage",
+    "activity": "Activity",
+    "mark_read": "Mark read",
+    "clear": "Clear",
+    "no_activity": "No recent activity",
+    "manage_title": "Session Settings"
+  },
+  "roles": {
+    "admin": "Admin",
+    "gm": "GM",
+    "player": "Player"
   },
   "toolkit": {
     "title": "Toolkit",
@@ -105,6 +185,7 @@
     "ui_prefs": "UI Preferences"
   },
   "notes": {
+    "title": "Session Notes",
     "new": "New Note",
     "edit": "Edit Note",
     "save": "Save Note",
@@ -112,7 +193,9 @@
     "empty": "No notes yet",
     "title_placeholder": "Title (optional)",
     "content_placeholder": "Write something important...",
-    "edited": "Edited"
+    "edited": "Edited",
+    "quick_note": "Quick note",
+    "saved": "Saved to notes"
   },
   "presets": {
     "new_preset": "New preset",
