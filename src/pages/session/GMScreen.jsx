@@ -28,6 +28,7 @@ import Card from "../../components/ui/Card";
 
 const GMScreen = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const session = useSelector((state) => state.session.currentSession);
   const participants = useSelector((state) => state.session.participants);
   const [activeTab, setActiveTab] = useState("combat"); // combat, notes, participants

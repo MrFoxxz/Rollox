@@ -122,7 +122,8 @@ const PresetModal = ({ isOpen, onClose, editingPreset = null }) => {
             <select 
               value={formData.type}
               onChange={(e) => setFormData({...formData, type: parseInt(e.target.value)})}
-              className="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-primary-500 outline-none transition-all font-bold appearance-none text-center"
+              disabled={Boolean(editingPreset && !editingPreset.id.startsWith('custom-'))}
+              className="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:border-primary-500 outline-none transition-all font-bold appearance-none text-center disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {[4, 6, 8, 10, 12, 20, 100].map(t => <option key={t} value={t}>d{t}</option>)}
             </select>
